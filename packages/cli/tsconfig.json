@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@gebeyasearch/tsconfig/base.json",
+    "compilerOptions": {
+        "isolatedModules": false,
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["./*"]
+        },
+        "tsBuildInfoFile": ".tsbuildinfo"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+}

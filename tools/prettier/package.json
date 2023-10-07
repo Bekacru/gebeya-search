@@ -1,0 +1,29 @@
+{
+  "name": "@gebeyasearch/prettier-config",
+  "private": true,
+  "version": "0.1.0",
+  "main": "index.mjs",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.4"
+  },
+  "devDependencies": {
+    "@gebeyasearch/tsconfig": "^0.1.0",
+    "@gebeyasearch/eslint-config": "workspace:*",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "eslint": "^8.48.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@gebeyasearch/eslint-config/base"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "@gebeyasearch/db",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./index.ts",
+    "types": "./index.ts",
+    "license": "MIT",
+    "scripts": {
+        "clean": "rm -rf .turbo node_modules",
+        "generate": "pnpm with-env prisma generate",
+        "push": "pnpm with-env prisma db push",
+        "pull": "pnpm with-env prisma db pull",
+        "dev": "pnpm with-env prisma studio --port 5556",
+        "with-env": "dotenv -e ../../.env --"
+    }, "dependencies": {
+        "@prisma/client": "^5.0.0",
+        "prisma-kysely": "^1.7.0"
+    },
+    "devDependencies": {
+        "dotenv-cli": "^7.2.1",
+        "eslint": "^8.48.0",
+        "prettier": "^3.0.3",
+        "prisma": "^5.0.0",
+        "typescript": "^5.2.2"
+    }
+}

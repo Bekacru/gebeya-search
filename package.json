@@ -1,0 +1,22 @@
+{
+    "name": "@gebeyasearch/root",
+    "private": true,
+    "engines": {
+        "node": ">=v18.17.1"
+    },
+    "scripts": {
+        "db:push": "pnpm -F db push",
+        "db:pull": "pnpm -F db pull",
+        "db:generate": "pnpm -F db generate",
+        "db:studio": "pnpm -F db dev"
+    },
+    "dependencies": {
+        "@gebeyasearch/prettier-config": "^0.1.0",
+        "dotenv-cli": "^7.3.0",
+        "prettier": "^3.0.3",
+        "tsup": "^7.2.0",
+        "turbo": "^1.10.15",
+        "typescript": "^5.2.2"
+    },
+    "prettier": "@gebeyasearch/prettier-config"
+}
