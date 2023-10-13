@@ -1,0 +1,12 @@
+{
+  "name": "bot",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm with-env tsx watch src/index.ts",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "grammy": "^1.19.1"
+  }
+}
