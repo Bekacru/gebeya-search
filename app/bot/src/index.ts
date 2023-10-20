@@ -1,11 +1,13 @@
-import { Bot } from "grammy";
+import { Bot as TelegramBot } from "grammy";
 
-import { env } from "../env";
+import { welcomeFeature } from "./welcome.js";
 
-const bot = new Bot(env.TELEGRAM_BOT_TOKEN);
+export function createBot(token: string) {
+    const bot = new TelegramBot(token);
 
-bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
+    bot.use(welcomeFeature);
 
-bot.on("message", (ctx) => ctx.reply("Got another message!"));
+    return bot;
+}
 
-bot.start();
+export type Bot = ReturnType<typeof createBot>;
