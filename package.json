@@ -5,6 +5,7 @@
         "node": ">=v18.17.1"
     },
     "scripts": {
+        "setup:telegram": "pnpm -F cli start telegram",
         "db:push": "pnpm -F db push",
         "db:pull": "pnpm -F db pull",
         "db:generate": "pnpm -F db generate",

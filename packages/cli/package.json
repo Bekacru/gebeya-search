@@ -1,5 +1,5 @@
 {
-    "name": "@gebeyasearch/bootstrap",
+    "name": "@gebeyasearch/cli",
     "scripts": {
         "start": "dotenv -e ../../.env -- tsx src/index.ts",
         "dev": "tsup --watch",
@@ -7,8 +7,6 @@
     },
     "license": "MIT",
     "type": "module",
-    "exports": "./dist/index.js",
-    "bin": "./dist/index.js",
     "author": {
         "name": "bekacru",
         "url": "https://twitter.com/imbereket"

@@ -7,21 +7,17 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Channel {
-    id          String      @id @default(cuid()) //this will use the orgnial id from telegram
-    username    String?
-    createdAt   DateTime    @default(now()) @map("created_at")
-    updatedAt   DateTime    @default(now()) @map("updated_at")
+model Shop {
+    id          String    @id //this will use the orgnial id from telegram
     title       String
     description String?
-    subscribers Int?
+    metadata    Json?
+    createdAt   DateTime  @default(now()) @map("created_at")
+    updatedAt   DateTime  @default(now()) @map("updated_at")
     image       String
-    rank        Int         @default(1)
     link        String?
-    type        ChannelType
+    type        ShopType
     Product     Product[]
-
-    @@index([id])
 }
 
 model Product {
@@ -29,6 +25,8 @@ model Product {
     createdAt   DateTime @default(now()) @map("created_at")
     title       String
     description String
+    metadata    Json?
+    categoryId  String
     price       Int      @default(0)
     phoneNumber String?  @map("phone_number")
     productLink String   @default("t.me") @map("product_link")
@@ -36,21 +34,33 @@ model Product {
     updatedAt   String?  @default("2022-08-09 20:08:56.124503") @map("updated_at")
     available   Boolean  @default(true)
 
-    Channel Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-    Images  Images[]
+    Shop     Shop            @relation(fields: [channelId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+    Category Category        @relation(fields: [categoryId], references: [id])
+    Images   ProductImages[]
 
-    @@index([id, channelId])
+    @@index([channelId, categoryId])
 }
 
-model Images {
+model Category {
+    id        String    @id @default(cuid())
+    title     String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @default(now())
+    Product   Product[]
+}
+
+model ProductImages {
     id        String  @id
     productId String
     url       String
     isPrimary Boolean @default(false)
     Product   Product @relation(fields: [productId], references: [id])
+
+    @@unique([url])
+    @@index([productId])
 }
 
-enum ChannelType {
-    Group
-    Channel
+enum ShopType {
+    TelegramGroup
+    TelegramChannel
 }
