@@ -25,13 +25,13 @@ const getChats = async (): Promise<Shop[]> => {
     const duration = Date.now() - timer;
     const fiveMinutes = 5 * 60 * 1000;
     if (duration > fiveMinutes) {
-        const channels = await prisma.shop.findMany();
-        fs.writeFile("./channels.json", JSON.stringify(channels)).catch((e) => {
+        const shop = await prisma.shop.findMany();
+        fs.writeFile("./shop.json", JSON.stringify(shop)).catch((e) => {
             logger.error(e);
         });
-        return channels;
+        return shop;
     }
-    const json = await fs.readFile("./channels.json", "utf8");
+    const json = await fs.readFile("./shop.json", "utf8");
     return JSON.parse(json) as Shop[];
 };
 
