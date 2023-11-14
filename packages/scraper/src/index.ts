@@ -5,7 +5,7 @@ import type { NewMessageEvent } from "telegram/events";
 import { NewMessage } from "telegram/events";
 import { StringSession } from "telegram/sessions";
 
-import type { Channel } from "@gebeyasearch/db";
+import type { Shop } from "@gebeyasearch/db";
 import { prisma } from "@gebeyasearch/db";
 
 import { env } from "../env";
@@ -21,18 +21,18 @@ const client = new TelegramClient(
 
 const timer = Date.now();
 
-const getChats = async (): Promise<Channel[]> => {
+const getChats = async (): Promise<Shop[]> => {
     const duration = Date.now() - timer;
     const fiveMinutes = 5 * 60 * 1000;
     if (duration > fiveMinutes) {
-        const channels = await prisma.channel.findMany();
+        const channels = await prisma.shop.findMany();
         fs.writeFile("./channels.json", JSON.stringify(channels)).catch((e) => {
             logger.error(e);
         });
         return channels;
     }
     const json = await fs.readFile("./channels.json", "utf8");
-    return JSON.parse(json) as Channel[];
+    return JSON.parse(json) as Shop[];
 };
 
 async function handleMessages(event: NewMessageEvent) {
