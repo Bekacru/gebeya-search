@@ -5,8 +5,9 @@
         "isolatedModules": false,
         "baseUrl": ".",
         "paths": {
-          "@/*": ["./src*"]
+            "@/*": ["./src*"]
         },
+        "noUncheckedIndexedAccess": false,
         "tsBuildInfoFile": ".tsbuildinfo"
     },
     "include": ["**/*.ts"],

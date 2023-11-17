@@ -1,30 +1,31 @@
 {
-  "name": "@gebeyasearch/scraper",
-  "scripts": {
-    "dev": "pnpm with-env tsx watch src/index.ts",
-    "with-env": "dotenv -e ../../.env --"
-  },
-  "dependencies": {
-    "@gebeyasearch/db": "workspace:^",
-    "@t3-oss/env-core": "^0.7.0",
-    "chalk": "^5.3.0",
-    "superjson": "^1.13.3",
-    "telegram": "^2.19.6",
-    "tsx": "^3.13.0",
-    "zod": "^3.22.4"
-  },
-  "devDependencies": {
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.3",
-    "@gebeyasearch/tsconfig": "workspace:^",
-    "@gebeyasearch/eslint-config": "workspace:*",
-    "@gebeyasearch/prettier-config": "workspace:*"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@gebeyasearch/eslint-config/base"
-    ]
-  },
-  "prettier": "@gebeyasearch/prettier-config"
+    "name": "@gebeyasearch/scraper",
+    "scripts": {
+        "dev": "pnpm with-env tsx watch src/index.ts",
+        "with-env": "dotenv -e ../../.env --",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "@gebeyasearch/db": "workspace:^",
+        "@t3-oss/env-core": "^0.7.0",
+        "chalk": "^5.3.0",
+        "superjson": "^1.13.3",
+        "telegram": "^2.19.6",
+        "tsx": "^3.13.0",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "eslint": "^8.48.0",
+        "prettier": "^3.0.3",
+        "@gebeyasearch/tsconfig": "workspace:^",
+        "@gebeyasearch/eslint-config": "workspace:*",
+        "@gebeyasearch/prettier-config": "workspace:*"
+    },
+    "eslintConfig": {
+        "root": true,
+        "extends": [
+            "@gebeyasearch/eslint-config/base"
+        ]
+    },
+    "prettier": "@gebeyasearch/prettier-config"
 }

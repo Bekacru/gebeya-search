@@ -8,36 +8,39 @@ datasource db {
 }
 
 model Shop {
-    id          String    @id //this will use the orgnial id from telegram
+    id          String   @id //this will use the orgnial id from telegram
     title       String
     description String?
     metadata    Json?
-    createdAt   DateTime  @default(now()) @map("created_at")
-    updatedAt   DateTime  @default(now()) @map("updated_at")
     image       String
     link        String?
     type        ShopType
-    Product     Product[]
+    createdAt   DateTime @default(now()) @map("created_at")
+    updatedAt   DateTime @default(now()) @map("updated_at")
+
+    Product Product[]
 }
 
 model Product {
-    id          String   @id
-    createdAt   DateTime @default(now()) @map("created_at")
-    title       String
-    description String
-    metadata    Json?
-    categoryId  String
-    price       Int      @default(0)
-    phoneNumber String?  @map("phone_number")
-    productLink String   @default("t.me") @map("product_link")
-    channelId   String   @map("channel_id")
-    updatedAt   String?  @default("2022-08-09 20:08:56.124503") @map("updated_at")
-    available   Boolean  @default(true)
+    id              String   @id
+    createdAt       DateTime @default(now()) @map("created_at")
+    title           String
+    description     String
+    descriptionHash String   @map("description_hash")
+    metadata        Json?
+    categoryId      String
+    price           Int      @default(0)
+    phoneNumber     String?  @map("phone_number")
+    productLink     String   @default("t.me") @map("product_link")
+    channelId       String   @map("channel_id")
+    updatedAt       String?  @default("2022-08-09 20:08:56.124503") @map("updated_at")
+    available       Boolean  @default(true)
 
     Shop     Shop            @relation(fields: [channelId], references: [id], onDelete: Cascade, onUpdate: NoAction)
     Category Category        @relation(fields: [categoryId], references: [id])
     Images   ProductImages[]
 
+    @@unique([descriptionHash])
     @@index([channelId, categoryId])
 }
 
